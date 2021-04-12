@@ -1,6 +1,6 @@
 
 resource "aws_security_group" "sg" {
-  vpc_id = aws_vpc.vpc.id
+  vpc_id = aws_vpc.vpc-msk-mwaa.id
 }
 
 resource "aws_kms_key" "kms" {
@@ -12,7 +12,7 @@ resource "aws_cloudwatch_log_group" "test" {
 }
 
 resource "aws_s3_bucket" "bucket" {
-  bucket = "msk-broker-logs-bucket"
+  bucket = "msk-broker-logs-bucket-study-airflow"
   acl    = "private"
 }
 
@@ -58,7 +58,7 @@ resource "aws_kinesis_firehose_delivery_stream" "test_stream" {
 
 resource "aws_msk_cluster" "example" {
   cluster_name           = "example"
-  kafka_version          = "2.4.1"
+  kafka_version          = "2.4.1.1"
   number_of_broker_nodes = 3
 
   broker_node_group_info {
